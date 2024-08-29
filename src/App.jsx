@@ -10,15 +10,7 @@ const reducer = (state, action) => {
       return state.filter((d) => d.name !== action.name);
 
     case "TOGGLE":
-      return state.map((o) => {
-        if (o.name === action.name) {
-          return {
-            ...o,
-            a: !o.a,
-          };
-        }
-        return o;
-      });
+      return state.map((o) => (o.name === action.name ? { ...o, a: !o.a } : o));
 
     default:
       break;
