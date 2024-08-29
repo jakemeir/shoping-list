@@ -12,8 +12,12 @@ const reducer = (state, action) => {
     case "TOGGLE":
       return state.map((o) => {
         if (o.name === action.name) {
-          o.a = !o.a;
+          return {
+            ...o,
+            a: !o.a,
+          };
         }
+        return o;
       });
 
     default:
@@ -47,6 +51,7 @@ function App() {
   }
 
   function toggleItemHandler(name) {
+    console.log("hello");
     dispatch({
       type: "TOGGLE",
       name: name,
